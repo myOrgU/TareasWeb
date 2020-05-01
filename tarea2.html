@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>calculos aritmeticos y logicos</title>
+</head>
+<script type="text/javascript">
+
+function principal(){
+	number1 = document.getElementById("n1");//variables globales!
+	number2 = document.getElementById("n2");//variable globales! sin var
+	var opciones = document.formulario.choice;
+	for (var i = 0; i < opciones.length; i++) {
+		 opciones[i].addEventListener("click",operar,false);
+	}
+	
+}
+function operar(e){
+	var choice = e.target.value;
+	var resultado = document.getElementById("resultado");
+	number1 = Number(number1.value);
+	number2 = Number(number2.value);
+	if(choice == "+"){
+		resultado.value = sumar(number2,number1);
+	}
+	if (choice == "-") {
+		resultado.value = restar(number1,number2);
+	}
+	if (choice == "*") {
+		resultado.value = multiplicar(number1,number2);
+	}
+	if (choice == "/") {
+		resultado.value = dividir(number1,number2);
+	}
+}
+function sumar(n1,n2){
+	return n1+n2;
+}
+function restar(n1,n2){
+	return n1-n2;
+}
+function multiplicar(n1,n2){
+	return n1*n2;
+}
+function dividir(n1,n2){
+	if (n2 == 0){
+		return "es division por cero";
+	}else{
+		return n1/n2;
+	}
+}
+
+window.addEventListener("load",principal,false);	
+</script>
+<body>
+	<form name="formulario">
+		<label for="number1">Numero 1:</label>
+		<input type="text" name="number1" id = "n1">
+		
+		<label for="number2">Numero 2:</label>
+		<input type="text" name="number2" id = "n2">
+		
+		<input type="text" name="resultado" id="resultado">
+
+		<label for="resultado">Resultado:</label>
+
+		<input type="radio" name="choice" id = "sumar" value="+">
+        <label for="sumar">Sumar</label>          
+
+		<input type="radio" name="choice" id = "restar" value="-">
+        <label for="restar">Restar</label>       
+
+		<input type="radio" name="choice" id = "multiplicar" value="*">
+        <label for="multiplicar">Multiplicar</label>   
+
+		<input type="radio" name="choice" id = "dividir" value="/">
+        <label for="dividir">Dividir</label> 
+	</form>
+
+</body>
+</html>

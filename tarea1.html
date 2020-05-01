@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tarea 1 - pweb 2</title>
+</head>
+<style type="text/css">
+	*{
+		padding: 0px;
+		margin: 0px;
+		box-sizing: border-box;
+	}
+	body{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	#contenedor{
+		background: teal;
+		width: 500px;
+		min-height: 500px;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+
+	}
+	form{
+		background: steelblue;
+		width: 300px;
+		min-height: 100px;
+		display: flex;
+		justify-content: space-around;
+		flex-direction: column;
+		padding: 20px;
+		align-items: center;
+	}
+	form > input{
+		width: 200px;
+	}
+	form div{
+		padding: 10px;
+	}
+
+	p{
+		background: white;
+		width: 300px;
+		min-height: 100px;
+		height: auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: black;
+		padding: 20px;
+	}
+</style>
+<script type="text/javascript">
+function principal(){
+	var boton = document.getElementById("aceptar");
+	boton.addEventListener("click",tamanio_letras,false);
+	var modos = document.formulario.modo;
+	modos[0].addEventListener("click",modos_color,false);
+	modos[1].addEventListener("click",modos_color,false);
+	//modos.addEventListener("click",modos_color,false);
+}	
+function tamanio_letras(){
+	var valor = document.getElementById("size").value;
+	var parrafo = document.getElementById("parrafo1");
+	//parrafo.style.color = "red";
+	valor = parseInt(valor);
+	//alert(parrafo);
+	parrafo.style.fontSize = valor+"px";//esta "px" es importante.
+}
+function modos_color(){
+	var opciones_modos = document.formulario.modo;
+	if(opciones_modos[0].checked ){
+		document.body.style.color = "black";
+		document.body.style.background = "white";	
+		document.getElementById("contenedor").style.background = "teal";
+		document.getElementById("parrafo1").style.background = "white";
+		document.getElementById("parrafo1").style.color = "black";
+		document.formulario.style.background = "steelblue";
+		
+	}
+	if(opciones_modos[1].checked){
+	document.body.style.color = "white";
+	document.body.style.background = "black";
+	document.getElementById("contenedor").style.background = "tomato";
+	document.getElementById("parrafo1").style.background = "black";
+	document.getElementById("parrafo1").style.color = "white";
+	document.formulario.style.background = "black";
+
+	}
+}
+
+
+//document.addEventListener("DOMContentLoaded", principal, false);//otra forma de hacerlo
+window.addEventListener("load",principal,false);
+</script>
+<body>
+	<div id="contenedor" name="divi">
+		<p id="parrafo1">
+			Este es el parrafo al cual le hago un font size desde javascript.
+		</p>
+		<form name="formulario">
+			<input type="number" id="size" min="11" max="50">
+			<input type="button" id="aceptar" value="aceptar">
+		
+			<div >
+				<input type="radio" id="light"  value="light" name="modo" default checked="true" >
+				<label for="light">Modo predeterminado</label>
+				<br>
+				<input type="radio" id="dark" value="dark" name="modo">
+				<label for="dark">Modo oscuro</label><br>
+			</div>
+			
+		<!--el name de los type radio los agrupa en opciones-->
+		</form>
+	</div>
+
+</body>
+</html>
